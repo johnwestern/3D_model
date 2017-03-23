@@ -5,8 +5,8 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.78.0 commit date:2017-02-24, commit time:14:33, hash:e92f235283</authoring_tool>
     </contributor>
-    <created>2017-03-23T23:03:02</created>
-    <modified>2017-03-23T23:03:02</modified>
+    <created>2017-03-23T23:09:02</created>
+    <modified>2017-03-23T23:09:02</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
@@ -101,7 +101,11 @@
       </extra>
     </light>
   </library_lights>
-  <library_images/>
+  <library_images>
+    <image id="file1" name="file1">
+      <init_from>file1.jpg</init_from>
+    </image>
+  </library_images>
   <library_effects>
     <effect id="phong4-effect">
       <profile_COMMON>
@@ -137,6 +141,16 @@
     </effect>
     <effect id="phong3-effect">
       <profile_COMMON>
+        <newparam sid="file1-surface">
+          <surface type="2D">
+            <init_from>file1</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="file1-sampler">
+          <sampler2D>
+            <source>file1-surface</source>
+          </sampler2D>
+        </newparam>
         <technique sid="common">
           <phong>
             <emission>
@@ -146,7 +160,7 @@
               <color sid="ambient">0 0 0 1</color>
             </ambient>
             <diffuse>
-              <color sid="diffuse">0.8 0.8 0.8 1</color>
+              <texture texture="file1-sampler" texcoord="map1"/>
             </diffuse>
             <specular>
               <color sid="specular">0.25 0.25 0.25 1</color>
@@ -321,7 +335,7 @@
         <instance_light url="#Lamp-light"/>
       </node>
       <node id="Avion" name="Avion" type="NODE">
-        <matrix sid="transform">0.4349493 0 0 0 0 -5.7575e-8 -1.415523 0.3164415 0 0.353393 -2.30618e-7 0.7149636 0 0 0 1</matrix>
+        <matrix sid="transform">0.6841182 0 0 0 0 -9.0558e-8 -2.226431 1.02259 0 0.5558408 -3.62732e-7 1.112892 0 0 0 1</matrix>
         <instance_geometry url="#Untitled-mesh" name="Avion">
           <bind_material>
             <technique_common>
